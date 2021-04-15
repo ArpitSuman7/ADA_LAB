@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<stdlib.h>
+void TOH(int n,char A,char B,char C)
+{
+    if(n>0)
+    {
+        TOH(n-1,A,C,B);
+        printf("\nMove disk number %d from %c to %c",n,A,B);
+        TOH(n-1,C,B,A);
+    }
+}
+
+int GCD(int a,int b){
+     while(a!=b){
+          if(a>b)
+              return GCD(a-b,b);
+          else
+             return GCD(a,b-a);
+     }
+     return a;
+}
+int main()
+{
+    int ch,n,n1,n2;
+    do{
+        printf("\n1.Tower of Hanoi\n2.GCD\n3.Exit\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+        case 1:
+        
+        printf("\nEnter no. of disks:");
+        scanf("%d", &n);
+        TOH(n,'A','B','C');
+            
+            break;
+        case 2:
+            printf("Enter the two positive integers: ");
+            scanf("%d %d",&n1,&n2);
+            printf("G.C.D of %d and %d is %d.\n",n1,n2,GCD(n1, n2));
+            break;
+        case 3:
+            break;
+        default: exit(0);
+            printf("Enter valid choice!!\n");
+        }
+    }while(ch!=3);
+    return 0;
+}
